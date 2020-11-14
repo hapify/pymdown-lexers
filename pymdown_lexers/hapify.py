@@ -15,12 +15,14 @@ class HapifyLexer(RegexLexer):
 
     tokens = {
         'root': [
-            (r'<<(\?|if|else|elseif|endif)([^>]*?)>>', token.Keyword),  # Condition
-            (r'<<(\@|for|endfor)([^>]*?)>>', token.Keyword),  # Iteration
             (r'<<<([^>]+)>>>', token.Comment),  # Evaluate
             (r'<<#([^>]+)>>', token.Comment),  # Comments
             (r'<<=([^>]+)>>', token.String),  # Interpolation
-            (r'<<([a-zA-Z_.]+)\s+([a-zA-Z_-]+)>>', token.String),  # Name interpolation
+            (r'<<([a-zA-Z_.]+)\s+([a-zA-Z_-]+)>>', token.String), # Name interpolation
+            (r'<<(\?\?|\?|@|if|elseif|for)(\d+)?\s', token.Operator),  # Condition opening
+            (r'<<(\@|\?\?|\?|endif|else|endfor)>>', token.Operator),  # Condition closing
+            (r'>>', token.Operator),  # Operator closing
+            (r'(\/|\*|\+|\-|\bor\b|\band\b|\bnot\b|\borNot\b|\bandNot\b)', token.Keyword),  # Condition keywords
             (r' |\t', token.Whitespace),
             (r'.', token.Text)
         ]
