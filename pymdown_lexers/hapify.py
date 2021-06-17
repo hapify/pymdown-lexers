@@ -19,6 +19,7 @@ class HapifyLexer(RegexLexer):
             (r'<<#([^>]+)>>', token.Comment),  # Comments
             (r'<<=([^>]+)>>', token.String),  # Interpolation
             (r'<<!([^>]+)>>', token.String),  # Notes interpolation
+            (r'<<-([^>]+)>>', token.String),  # Meta interpolation
             (r'<<(\@|\?\?|\?|endif|else|endfor)>>', token.Operator),  # Condition closing
             (r'<<(\?\?|\?|@|if|elseif|for)', token.Operator, 'condition'),  # Condition opening
             (r'<<([a-zA-Z_.]+)\s+([a-zA-Z_-]+)>>', token.String),  # Name interpolation

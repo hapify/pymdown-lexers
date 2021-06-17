@@ -9,7 +9,7 @@ hapify=pymdown_lexers:HapifyLexer
 
 setup(
     name='pymdown-lexers',
-    version='1.2.0',
+    version='1.3.0',
     description='Pygments lexer package for PyMdown.',
     author='Edouard Demotes',
     author_email='edouard [at] tractr.net',
